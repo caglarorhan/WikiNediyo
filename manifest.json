@@ -8,7 +8,6 @@
     "default_title": "WikiNediyo",
     "default_icon": "./img/wikinediyo_16.png"
   },
-  "permissions": ["declarativeContent","storage","notifications"],
   "icons": {
     "16": "./img/wikinediyo_16.png",
     "32": "./img/wikinediyo_32.png",
@@ -17,16 +16,9 @@
     "256": "./img/wikinediyo_256.png",
     "512": "./img/wikinediyo_512.png"
   },
-  "background" : { "scripts" : ["./js/background.js"] },
-  "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "MacCtrl+Shift+F"
-      },
-      "description": "What was wikipedia said about the text you selected..."
-    }
+  "background" : {
+    "scripts" : ["./js/eventPage.js"],
+    "persistent": false
   },
-  "options_page" : "options.html"
-
+  "permissions": ["tabs","contextMenus"]
 }
