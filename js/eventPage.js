@@ -13,16 +13,19 @@ function fixedEncodeURI(str){
 
 chrome.contextMenus.onClicked.addListener(function(clickData){
     console.log("calisiyor");
-    if(clickData.menuItemId == "wikinediyo" && clickData.selectionText){
+    if(clickData.menuItemId === "wikinediyo" && clickData.selectionText){
         let wikiUrl = "https://tr.wikipedia.org/wiki/"+fixedEncodeURI(clickData.selectionText);
-        let createData = {
-            "url": wikiUrl,
-            "type": "popup",
-            "top": 5,
-            "left":5,
-            "width": screen.availWidth/2,
-            "height": screen.availHeight/2
-        };
-        chrome.windows.create(createData, function(){} );
+        
+        chrome.windows.getCurrent(function(currentWindow) {
+            let createData = {
+                "url": wikiUrl,
+                "type": "popup",
+                "top": 5,
+                "left":5,
+                "width": currentWindow.width/2,
+                "height": currentWindow.height/2
+            };
+            chrome.windows.create(createData, function(){});
+        });
     }
-})
+});
